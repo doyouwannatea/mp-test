@@ -20,9 +20,19 @@
 }
 
 .delete-button {
-  /* position: absolute;
-  right: 0.5rem;
-  top: 0.5rem; */
+  color: #d11a2a;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+}
+.delete-button:hover {
+  opacity: 0.85;
+}
+
+.delete-button:active {
+  opacity: 0.95;
 }
 
 .header {
