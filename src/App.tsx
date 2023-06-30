@@ -1,45 +1,24 @@
-import React, { useContext, useState } from "react";
-
+import { useContext, useEffect } from "react";
+import TestLocationsList from "./components/TestLocationsList";
 import { observer } from "mobx-react-lite";
-import { storeContext } from "./store";
+import { storeContext } from "./stores/store";
 
-export default function App() {
+const App = observer(() => {
+  const store = useContext(storeContext);
+
+  useEffect(() => {
+    store.fetchData();
+  }, [store]);
+
   return (
     <div className="App">
-      <TestLocationsList />
+      <TestLocationsList
+        envList={store.envs}
+        locationList={store.locations}
+        serverList={store.servers}
+      />
     </div>
   );
-}
-
-const TestLocationForm = observer(function TestLocationForm() {
-  const store = useContext(storeContext);
-  if (!store.isLoaded) {
-    return <div>Данные не загружены</div>;
-  }
-  return <div>Hello world</div>;
 });
 
-const TestLocationsList = () => {
-  const [locationsList, setLocationsList] = useState([{}]);
-  return (
-    <>
-      {locationsList.map((location, index) => (
-        <TestLocationForm key={`location-${index}`} />
-      ))}
-      <button
-        onClick={() => {
-          setLocationsList([...locationsList, {}]);
-        }}
-      >
-        Добавить тестовую локацию
-      </button>
-      <button
-        onClick={() => {
-          console.log(locationsList);
-        }}
-      >
-        Вывести результат в консоль
-      </button>
-    </>
-  );
-};
+export default App;

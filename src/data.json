@@ -20,11 +20,13 @@
   "envs": [
     {
       "envID": 1,
-      "name": "Test_192.168.220.157"
+      "name": "Test_192.168.220.157",
+      "locationsID": [1, 2]
     },
     {
       "envID": 2,
-      "name": "Test_192.168.112.23"
+      "name": "Test_192.168.112.23",
+      "locationsID": [3, 4]
     }
   ],
   "servers": [
@@ -43,14 +45,14 @@
     {
       "serverID": 43,
       "name": "MPTEST43",
-      "locationID": 1,
-      "envID": 2
+      "locationID": 2,
+      "envID": 1
     },
     {
       "serverID": 44,
       "name": "MPTEST44",
       "locationID": 2,
-      "envID": 2
+      "envID": 1
     },
     {
       "serverID": 45,
