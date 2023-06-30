@@ -20,6 +20,13 @@ const TestLocationsList = observer(
     );
     const store = useContext(storeContext);
 
+    function onDeleteLocation(index: number) {
+      setLocationsList((list) => [
+        ...list.slice(0, index),
+        ...list.slice(index + 1),
+      ]);
+    }
+
     function onEnvChange(index: number) {
       return (env?: Env) => {
         setLocationsList((list) => {
@@ -66,6 +73,7 @@ const TestLocationsList = observer(
               onEnvChange={onEnvChange(index)}
               onLocationChange={onLocationChange(index)}
               onHintChange={onHintChange(index)}
+              onDeleteLocation={() => onDeleteLocation(index)}
             />
           ))
         ) : (

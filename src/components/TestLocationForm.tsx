@@ -16,6 +16,7 @@ type Props = {
   onLocationChange: (location?: Location) => void;
   onEnvChange: (env?: Env) => void;
   onHintChange: (hint?: string) => void;
+  onDeleteLocation: () => void;
 };
 
 const TestLocationForm = observer(
@@ -26,10 +27,11 @@ const TestLocationForm = observer(
     hint,
     locationID,
     locationList,
+    serverList,
     onEnvChange,
     onHintChange,
     onLocationChange,
-    serverList,
+    onDeleteLocation,
   }: Props) => {
     const availableEnvList = useMemo(
       () =>
@@ -82,6 +84,9 @@ const TestLocationForm = observer(
 
     return (
       <form>
+        <button type="button" onClick={onDeleteLocation}>
+          удалить
+        </button>
         <p>{locationName}</p>
         <AppSelect
           value={locationID}
