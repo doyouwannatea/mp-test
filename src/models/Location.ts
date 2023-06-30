@@ -4,6 +4,7 @@ export interface Location {
 }
 
 export interface CreatedLocation {
+  id: string;
   locationID: number;
   envID: number;
   hint: string;

@@ -1,0 +1,20 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.input.with-icon {
+  padding-left: 2em;
+}
+
+.icon {
+  position: absolute;
+  left: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}

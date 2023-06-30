@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import TestLocationForm from "./TestLocationForm";
 import { CreatedLocation, Location } from "../models/Location";
 import { Env } from "../models/Env";
@@ -6,6 +7,8 @@ import { Server } from "../models/Server";
 import { observer } from "mobx-react-lite";
 import { storeContext } from "../stores/store";
 import { deepClone } from "../utils/object";
+
+import styles from "./TestLocationsList.module.css";
 
 type Props = {
   locationList: Location[];
@@ -57,12 +60,19 @@ const TestLocationsList = observer(
       };
     }
 
+    function createLocation() {
+      setLocationsList((list) => [
+        ...list,
+        { id: uuidv4(), locationID: 0, envID: 0, hint: "" },
+      ]);
+    }
+
     return (
       <>
         {store.isLoaded ? (
           locationsList.map((location, index) => (
             <TestLocationForm
-              key={`location-${index}`}
+              key={location.id}
               locationName={`Тестовая локация ${index + 1}`}
               envID={location.envID}
               locationID={location.locationID}
@@ -79,23 +89,19 @@ const TestLocationsList = observer(
         ) : (
           <div>Данные не загружены</div>
         )}
-        <button
-          onClick={() => {
-            setLocationsList([
-              ...locationsList,
-              { envID: 0, locationID: 0, hint: "" },
-            ]);
-          }}
-        >
-          Добавить тестовую локацию
-        </button>
-        <button
-          onClick={() => {
-            console.log(locationsList);
-          }}
-        >
-          Вывести результат в консоль
-        </button>
+        <div className={styles.controls}>
+          <button className={styles.button} onClick={createLocation}>
+            Добавить тестовую локацию
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              console.log(locationsList);
+            }}
+          >
+            Вывести результат в консоль
+          </button>
+        </div>
       </>
     );
   }

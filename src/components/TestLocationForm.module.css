@@ -1,0 +1,43 @@
+.form {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  gap: 10px 20px;
+}
+
+.title {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 0.2em;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete-button {
+  /* position: absolute;
+  right: 0.5rem;
+  top: 0.5rem; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.server-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hint-wrapper {
+  grid-column: 1 / -1;
+}
